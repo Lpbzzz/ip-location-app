@@ -5,16 +5,14 @@
       "src": "backend/src/main.ts",
       "use": "@vercel/node",
       "config": {
-        "buildCommand": "cd backend && npm run build"
+        "buildCommand": "cd backend && pnpm install && pnpm run build"
       }
     },
     {
-      "src": "frontend/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist",
-        "buildCommand": "cd frontend && npm install && npm run build",
-        "framework": "vite"
+        "buildCommand": "cd frontend && pnpm install && pnpm run build",
+        "distDir": "frontend/dist"
       }
     }
   ],
@@ -22,10 +20,6 @@
     {
       "src": "/api/(.*)",
       "dest": "/backend/src/main.ts"
-    },
-    {
-      "src": "/assets/(.*)",
-      "dest": "/frontend/assets/$1"
     },
     {
       "handle": "filesystem"

@@ -9,8 +9,6 @@ backend/node_modules
 .env.test
 
 # Build artifacts
-frontend/dist
-backend/dist
 
 # Logs
 npm-debug.log*
