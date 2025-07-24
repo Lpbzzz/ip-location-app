@@ -9,14 +9,14 @@
       "src": "frontend/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "framework": "vite"
+        "distDir": "dist"
       }
     }
   ],
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "backend/src/main.ts"
+      "dest": "/backend/dist/src/main.js"
     },
     {
       "handle": "filesystem"
