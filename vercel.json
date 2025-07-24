@@ -2,21 +2,21 @@
   "version": 2,
   "builds": [
     {
-      "src": "backend/src/main.ts",
+      "src": "backend/package.json",
       "use": "@vercel/node"
     },
     {
       "src": "frontend/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist"
+        "framework": "vite"
       }
     }
   ],
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "/backend/src/main.ts"
+      "dest": "/backend/dist/src/main.js"
     },
     {
       "handle": "filesystem"
