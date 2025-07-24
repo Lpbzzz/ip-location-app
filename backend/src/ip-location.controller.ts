@@ -5,12 +5,30 @@ import { IpLocationService, LocationData } from './ip-location.service';
 export class IpLocationController {
   constructor(private readonly ipLocationService: IpLocationService) {}
 
+  @Get('health')
+  async healthCheck(): Promise<{ status: string; timestamp: string }> {
+    return {
+      status: 'ok',
+      timestamp: new Date().toISOString()
+    };
+  }
+
   @Get('current')
   async getCurrentLocation(@Req() request: any): Promise<LocationData> {
     try {
       // 从请求头中获取用户的真实IP地址
       const userIp = this.getUserIpFromRequest(request);
-      return await this.ipLocationService.getCurrentIpLocation(userIp);
+      
+      // 检查是否为本地IP地址（IPv4和IPv6）
+      const isLocalIp = this.isLocalIpAddress(userIp);
+      
+      if (isLocalIp) {
+        // 如果是本地IP，直接获取公网IP
+        return await this.ipLocationService.getCurrentIpLocation();
+      } else {
+        // 如果是公网IP，使用该IP查询
+        return await this.ipLocationService.getCurrentIpLocation(userIp);
+      }
     } catch (error) {
       throw new BadRequestException(error.message);
     }
@@ -41,6 +59,20 @@ export class IpLocationController {
     
     // 如果都没有，使用连接的远程地址
     return request.connection.remoteAddress || request.socket.remoteAddress || '127.0.0.1';
+  }
+
+  private isLocalIpAddress(ip: string): boolean {
+    // 检查IPv4本地地址
+    if (ip === '127.0.0.1' || ip === 'localhost' || ip.startsWith('192.168.') || ip.startsWith('10.') || ip.startsWith('172.')) {
+      return true;
+    }
+    
+    // 检查IPv6本地地址
+    if (ip === '::1' || ip === '::ffff:127.0.0.1' || ip.startsWith('fe80:') || ip.startsWith('fc00:') || ip.startsWith('fd00:')) {
+      return true;
+    }
+    
+    return false;
   }
 
   @Get('query')

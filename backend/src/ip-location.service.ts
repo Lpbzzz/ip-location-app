@@ -58,16 +58,16 @@ export class IpLocationService {
     }
   }
   
-  async getCurrentIpLocation(userIp?: string): Promise<LocationData> {
+  async getCurrentIpLocation(ip?: string): Promise<LocationData> {
     try {
-      if (userIp) {
-        // 如果提供了用户IP，直接查询该IP的位置
-        return this.getLocationByIp(userIp);
-      } else {
-        // 获取当前IP地址（服务器IP）
-        const ipResponse = await axios.get('http://ip-api.com/json/', this.getAxiosConfig());
-        return this.getLocationByIp(ipResponse.data.query);
+      if (ip) {
+        // 如果提供了IP地址，直接查询该IP
+        return this.getLocationByIp(ip);
       }
+      
+      // 获取当前IP地址
+      const ipResponse = await axios.get('http://ip-api.com/json/', this.getAxiosConfig());
+      return this.getLocationByIp(ipResponse.data.query);
     } catch (error) {
       throw new Error(`Failed to get current IP location: ${error.message}`);
     }

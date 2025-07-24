@@ -39,20 +39,8 @@ const IpInput: React.FC<IpInputProps> = ({ ipSegments, onIpSegmentsChange, class
 
   // 处理键盘事件
   const handleKeyDown = (index: number, e: React.KeyboardEvent<HTMLInputElement>) => {
-    // 按下Enter键时跳到下一个输入框
-    if (e.key === 'Enter' && index < 3) {
-      e.preventDefault();
-      const nextInput = inputRefs.current[index + 1];
-      if (nextInput) {
-        nextInput.focus();
-        // 自动选中所有文本
-        setTimeout(() => {
-          nextInput.select();
-        }, 0);
-      }
-    }
     // 按下点号时跳到下一个输入框
-    else if (e.key === '.' && index < 3) {
+    if (e.key === '.' && index < 3) {
       e.preventDefault();
       const nextInput = inputRefs.current[index + 1];
       if (nextInput) {

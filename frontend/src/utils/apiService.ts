@@ -16,11 +16,8 @@ export interface LocationData {
 
 /**
  * API基础URL
- * 生产环境使用相对路径，开发环境使用完整URL
  */
-const API_BASE_URL = import.meta.env.PROD 
-  ? '' // 生产环境使用相对路径
-  : (import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001');
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001';
 
 /**
  * IP地理位置API服务
