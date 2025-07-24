@@ -1,0 +1,254 @@
+/* 全局样式 */
+.layout {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  flex-direction: column;
+}
+
+/* 头部样式 */
+.header {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 0 24px;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-icon {
+  font-size: 32px;
+  color: #1890ff;
+}
+
+.header-title {
+  margin: 0 !important;
+  color: #1890ff;
+  font-weight: 600;
+}
+
+/* 内容区域 */
+.content {
+  flex: 1;
+  padding: 16px;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 8px;
+}
+
+/* 搜索卡片 */
+.search-card {
+  margin-bottom: 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+}
+
+.search-section {
+  text-align: center;
+}
+
+.current-ip-section {
+  text-align: center;
+}
+
+/* 结果区域 */
+.result-section {
+  margin-top: 24px;
+}
+
+.info-card, .map-card {
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  height: 100%;
+}
+
+.info-item {
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.info-item:last-child {
+  border-bottom: none;
+}
+
+/* 响应式标题样式 */
+.responsive-title {
+  font-size: 24px !important;
+}
+
+/* 响应式设计 */
+@media (max-width: 395px) {
+  .responsive-title {
+    font-size: 16px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .responsive-title {
+    font-size: 18px !important;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+  .responsive-title {
+    font-size: 20px !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+  .responsive-title {
+    font-size: 22px !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .responsive-title {
+    font-size: 24px !important;
+  }
+}
+
+@media (max-width: 395px) {
+  .header {
+    padding: 0 4px;
+  }
+  
+  .content {
+    padding: 4px;
+  }
+  
+  .container {
+    padding: 0 2px;
+  }
+  
+  .search-card {
+    margin-bottom: 6px;
+  }
+  
+  .result-section {
+    margin-top: 6px;
+  }
+  
+  .ip-input-container {
+    gap: 4px !important;
+  }
+  
+  .ip-input-container .ant-input {
+    width: 45px !important;
+    font-size: 14px !important;
+    padding: 4px 6px !important;
+  }
+  
+  .ip-input-container span {
+    font-size: 14px !important;
+    margin: 0 2px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .header {
+    padding: 0 8px;
+  }
+  
+  .content {
+    padding: 8px;
+  }
+  
+  .container {
+    padding: 0 4px;
+  }
+  
+  .search-card {
+    margin-bottom: 8px;
+  }
+  
+  .result-section {
+    margin-top: 8px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+  .header {
+    padding: 0 12px;
+  }
+  
+  .content {
+    padding: 12px;
+  }
+  
+  .container {
+    padding: 0 6px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 0 16px;
+  }
+  
+  .content {
+    padding: 16px;
+  }
+  
+  .header-title {
+    font-size: 20px !important;
+  }
+  
+  .logo-icon {
+    font-size: 24px;
+  }
+}
+
+/* 动画效果 */
+.search-card, .info-card, .map-card {
+  transition: all 0.3s ease;
+}
+
+.search-card:hover, .info-card:hover, .map-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Antd 组件自定义样式 */
+.ant-input-search .ant-input-group .ant-input-affix-wrapper {
+  border-radius: 8px 0 0 8px;
+}
+
+.ant-input-search .ant-btn {
+  border-radius: 0 8px 8px 0;
+}
+
+.ant-btn-primary {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(24, 144, 255, 0.3);
+}
+
+.ant-card {
+  border: none;
+}
+
+.ant-card-head {
+  border-bottom: 1px solid #f0f0f0;
+  background: rgba(250, 250, 250, 0.8);
+}
+
+/* 地图容器样式 */
+.leaflet-container {
+  border-radius: 8px;
+  overflow: hidden;
+}

@@ -1,0 +1,27 @@
+{
+  "name": "ip-geolocation-app",
+  "version": "1.0.0",
+  "description": "IP地理位置查询应用",
+  "scripts": {
+    "dev": "concurrently \"pnpm run dev:backend\" \"pnpm run dev:frontend\"",
+    "dev:frontend": "cd frontend && pnpm run dev",
+    "dev:backend": "cd backend && pnpm run start:dev",
+    "build": "pnpm run build:frontend && pnpm run build:backend",
+    "build:frontend": "cd frontend && pnpm run build",
+    "build:backend": "cd backend && pnpm run build",
+    "start": "cd backend && pnpm run start:prod",
+    "install:all": "pnpm install && cd frontend && pnpm install && cd ../backend && pnpm install"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  },
+  "keywords": [
+    "ip",
+    "geolocation",
+    "react",
+    "nestjs",
+    "typescript"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}
